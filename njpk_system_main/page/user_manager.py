@@ -1,7 +1,4 @@
-from time import sleep
-
 from selenium.webdriver.common.by import By
-from selenium.webdriver.remote.webdriver import WebDriver
 
 from njpk_system_main.page.base_page import BasePage
 
@@ -19,12 +16,12 @@ class UserManager(BasePage):
             elements_len = len(self.finds(By.XPATH, '/html/body/div[3]'))
             if elements_len <= 0:
                 self.find(By.XPATH,
-                          '/html/body/div[1]/div/div[2]/div[2]/div/div[2]/div[3]/div/div/div[2]/div/form/div[1]/div/div/div/div/div/div[2]/input').click()
+                          '/html/body/div[1]/div/div[2]/div[2]/div/div[2]/div[3]/div/div/div[2]/div/form/div[1]/div/div/div/div/div/div[1]/span/span/i').click()
             return elements_len > 0
 
         self.wait_for_elem(wait_select_rule)
         self.find(By.XPATH,
-                  '/html/body/div[1]/div/div[2]/div[2]/div/div[2]/div[3]/div/div/div[2]/div/form/div[1]/div/div/div/div/div/div[2]/input').click()
+                  '/html/body/div[1]/div/div[2]/div[2]/div/div[2]/div[3]/div/div/div[2]/div/form/div[1]/div/div/div/div/div/div[1]/span/span/i').click()
 
         # 勾选角色
         self.wait_for_click((By.XPATH, '/html/body/div[3]/div[1]/div[1]/div[1]/ul/li[4]/label/span/span'))
@@ -43,23 +40,24 @@ class UserManager(BasePage):
             '测试9001')
 
         # 点击行政区划选择框
-        def wait_select_area(x):
-            elements_len = len(self.finds(By.XPATH, '/html/body/div[4]/div[1]/div/div[1]/ul/li/span'))
-            if elements_len <= 0:
-                self.find(By.XPATH,
-                          '/html/body/div[1]/div/div[2]/div[2]/div/div[2]/div[3]/div/div/div[2]/div/form/div[13]/div/div/div/div/div/div/input').click()
-            return elements_len > 0
-        self.wait_for_elem(wait_select_area)
+        # def wait_select_area(x):
+        #     elements_len = len(self.finds(By.XPATH, '/html/body/div[4]/div[1]/div/div[1]/ul/li/label/span[1]/span'))
+        #     if elements_len <= 0:
+        #         self.find(By.XPATH,
+        #                   '/html/body/div[1]/div/div[2]/div[2]/div/div[2]/div[3]/div/div/div[2]/div/form/div[13]/div/div/div/div/div/div/span/span/i').click()
+        #     return elements_len > 0
+        #
+        # self.wait_for_elem(wait_select_area)
         # self.wait_for_visible((By.XPATH,
-        #                        '/html/body/div[1]/div/div[2]/div[2]/div/div[2]/div[3]/div/div/div[2]/div/form/div[13]/div/div/div/div/div/div/input'))
+        #                        '/html/body/div[1]/div/div[2]/div[2]/div/div[2]/div[3]/div/div/div[2]/div/form/div[13]/div/div/div/div/div/div/span/span/i'))
         # self.wait_for_click((By.XPATH,
-        #                      '/html/body/div[1]/div/div[2]/div[2]/div/div[2]/div[3]/div/div/div[2]/div/form/div[13]/div/div/div/div/div/div/input'))
-        self.find(By.XPATH,
-                  '/html/body/div[1]/div/div[2]/div[2]/div/div[2]/div[3]/div/div/div[2]/div/form/div[13]/div/div/div/div/div/div/input').click()
+        #                      '/html/body/div[1]/div/div[2]/div[2]/div/div[2]/div[3]/div/div/div[2]/div/form/div[13]/div/div/div/div/div/div/span/span/i'))
+        self.find(By.CSS_SELECTOR,
+                  '#app > div > div.page-footer > div.page-main > div > div.card-cantainer > div.manage-sys-dialog.manage-sys-wrapper > div > div > div.el-dialog__body > div > form > div:nth-child(13) > div > div > div > div > div > div > span > span > i').click()
 
         # 勾选行政区划
-        self.wait_for_click((By.XPATH, 'html/body/div[4]/div[1]/div/div[1]/ul/li/label/span[1]/span'))
-        self.find(By.XPATH, '/html/body/div[4]/div[1]/div/div[1]/ul/li/label/span[1]/span').click()
+        self.wait_for_click((By.XPATH, '/html/body/div[4]/div[1]/div/div[1]/ul/li/label/span[1]/input'))
+        self.find(By.XPATH, '/html/body/div[4]/div[1]/div/div[1]/ul/li/label/span[1]/input').click()
         # 点击确定
         self.wait_for_click(
             (By.XPATH, '//*[@id="app"]/div/div[2]/div[2]/div/div[2]/div[3]/div/div/div[3]/span/button[2]/span'))
@@ -86,11 +84,13 @@ class UserManager(BasePage):
                 return False
 
             def wait_user_details(x):
-                elements_len = len(self.finds(By.XPATH, '/html/body/div[1]/div/div[2]/div[2]/div/div[2]/div[3]/div/div/div[1]/span'))
+                elements_len = len(
+                    self.finds(By.XPATH, '/html/body/div[1]/div/div[2]/div[2]/div/div[2]/div[3]/div/div/div[1]/span'))
                 if elements_len <= 0:
                     self.find(By.XPATH,
                               '/html/body/div/div/div[2]/div[2]/div/div[2]/div[1]/div[2]/div[2]/div[3]/table/tbody/tr[1]/td[9]/div/button[1]').click()
                 return elements_len > 0
+
             self.wait_for_elem(wait_user_details)
             # self.wait_for_click(
             #     (By.XPATH,

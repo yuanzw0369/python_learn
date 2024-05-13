@@ -1,4 +1,3 @@
-from time import sleep
 from selenium.webdriver.common.by import By
 
 from njpk_system_main.page.admin_page import Admin
@@ -10,5 +9,5 @@ class Main(BasePage):
 
     def goto_admin(self):
         self.wait_for_click((By.XPATH, '//*[@id="app"]/div/div[1]/div/div[1]/div[2]/ul/li[3]/span'))
-        self.find(By.XPATH, '//*[@id="app"]/div/div[1]/div/div[1]/div[2]/ul/li[3]/span').click()
+        self.steps("../page/main.yaml", "goto_admin")
         return Admin(self._driver)

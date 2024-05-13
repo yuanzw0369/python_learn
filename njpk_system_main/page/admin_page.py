@@ -1,5 +1,3 @@
-from time import sleep
-
 from selenium.webdriver.common.by import By
 from njpk_system_main.page.base_page import BasePage
 from njpk_system_main.page.user_manager import UserManager

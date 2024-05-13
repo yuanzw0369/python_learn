@@ -1,0 +1,7 @@
+goto_admin:
+  - by: xpath
+    locator: '//*[@id="app"]/div/div[1]/div/div[1]/div[2]/ul/li[3]/span'
+    action: click
+
+goto_user_manager:
+  -
