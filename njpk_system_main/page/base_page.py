@@ -1,3 +1,4 @@
+import logging
 from time import sleep
 
 import yaml
@@ -28,6 +29,9 @@ class BasePage:
         if self._base_url != "":
             self._driver.get(self._base_url)
             sleep(2)
+
+    def set_implicitly(self, time):
+        self._driver.implicitly_wait(time)
 
     @handle_black
     def find(self, locator, value: str = None):
@@ -68,3 +72,6 @@ class BasePage:
 
     def wait_for_elem(self, condition, time=10):
         WebDriverWait(self._driver, time).until(condition)
+
+    def screenshot(self, name):
+        self._driver.save_screenshot(name)

@@ -1,7 +1,11 @@
+import logging
+
 from selenium.webdriver.common.by import By
 
 
 def handle_black(func):
+    logging.basicConfig(level=logging.INFO)
+
     def wrapper(*args, **kwargs):
         from njpk_system_main.page.base_page import BasePage
         _black_list = [
@@ -14,12 +18,15 @@ def handle_black(func):
         _error_num = 0
         instance: BasePage = args[0]
         try:
+            logging.info("run" + func.__name__ + "\n args: \n" + repr(args) + "\n" + repr(kwargs))
             element = func(*args, **kwargs)
             _error_num = 0
-            instance._driver.implicitly_wait(10)
+            instance.set_implicitly(10)
             return element
         except Exception as e:
-            instance._driver.implicitly_wait(10)
+            instance.screenshot("tmp.png")
+            logging.error("not found element, handle black list")
+            instance.set_implicitly(10)
             if _error_num > _max_num:
                 raise e
             _error_num += 1

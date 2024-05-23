@@ -24,7 +24,8 @@ class UserManager(BasePage):
                   '/html/body/div[1]/div/div[2]/div[2]/div/div[2]/div[3]/div/div/div[2]/div/form/div[1]/div/div/div/div/div/div[1]/span/span/i').click()
 
         # 勾选角色
-        self.wait_for_click((By.XPATH, '/html/body/div[3]/div[1]/div[1]/div[1]/ul/li[4]/label/span/span'))
+        self.wait_for_click((By.XPATH,
+                             '/html/body/div[1]/div/div[2]/div[2]/div/div[2]/div[3]/div/div/div[2]/div/form/div[13]/div/div/div/div/div/div/input'))
         self.find(By.XPATH, '/html/body/div[3]/div[1]/div[1]/div[1]/ul/li[4]/label/span/span').click()
 
         # 输入账号
@@ -40,29 +41,29 @@ class UserManager(BasePage):
             '测试9001')
 
         # 点击行政区划选择框
-        # def wait_select_area(x):
-        #     elements_len = len(self.finds(By.XPATH, '/html/body/div[4]/div[1]/div/div[1]/ul/li/label/span[1]/span'))
-        #     if elements_len <= 0:
-        #         self.find(By.XPATH,
-        #                   '/html/body/div[1]/div/div[2]/div[2]/div/div[2]/div[3]/div/div/div[2]/div/form/div[13]/div/div/div/div/div/div/span/span/i').click()
-        #     return elements_len > 0
-        #
-        # self.wait_for_elem(wait_select_area)
+        def wait_select_area(x):
+            elements_len = len(self.finds(By.XPATH, '/html/body/div[4]/div[1]/div/div[1]/ul'))
+            if elements_len <= 0:
+                self.find(By.XPATH,
+                          '/html/body/div[1]/div/div[2]/div[2]/div/div[2]/div[3]/div/div/div[2]/div/form/div[13]/div/div/div/div/div/div/span/span/i').click()
+            return elements_len > 0
+
+        self.wait_for_elem(wait_select_area)
         # self.wait_for_visible((By.XPATH,
         #                        '/html/body/div[1]/div/div[2]/div[2]/div/div[2]/div[3]/div/div/div[2]/div/form/div[13]/div/div/div/div/div/div/span/span/i'))
         # self.wait_for_click((By.XPATH,
         #                      '/html/body/div[1]/div/div[2]/div[2]/div/div[2]/div[3]/div/div/div[2]/div/form/div[13]/div/div/div/div/div/div/span/span/i'))
-        self.find(By.CSS_SELECTOR,
-                  '#app > div > div.page-footer > div.page-main > div > div.card-cantainer > div.manage-sys-dialog.manage-sys-wrapper > div > div > div.el-dialog__body > div > form > div:nth-child(13) > div > div > div > div > div > div > span > span > i').click()
+        self.find(By.XPATH,
+                  '/html/body/div[1]/div/div[2]/div[2]/div/div[2]/div[3]/div/div/div[2]/div/form/div[13]/div/div/div/div/div/div/span/span/i').click()
 
         # 勾选行政区划
-        self.wait_for_click((By.XPATH, '/html/body/div[4]/div[1]/div/div[1]/ul/li/label/span[1]/input'))
-        self.find(By.XPATH, '/html/body/div[4]/div[1]/div/div[1]/ul/li/label/span[1]/input').click()
+        self.wait_for_click((By.XPATH, '/html/body/div[4]/div[1]/div/div[1]/ul/li/span'))
+        self.find(By.XPATH, '/html/body/div[4]/div[1]/div/div[1]/ul/li/label/span[1]/span').click()
         # 点击确定
         self.wait_for_click(
-            (By.XPATH, '//*[@id="app"]/div/div[2]/div[2]/div/div[2]/div[3]/div/div/div[3]/span/button[2]/span'))
+            (By.XPATH, '/html/body/div[1]/div/div[2]/div[2]/div/div[2]/div[3]/div/div/div[3]/span/button[2]'))
         self.find(By.XPATH,
-                  '//*[@id="app"]/div/div[2]/div[2]/div/div[2]/div[3]/div/div/div[3]/span/button[2]/span').click()
+                  '/html/body/div[1]/div/div[2]/div[2]/div/div[2]/div[3]/div/div/div[3]/span/button[2]').click()
         # self._driver.quit()
 
     def get_user(self, value):
